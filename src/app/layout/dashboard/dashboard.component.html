@@ -1,0 +1,446 @@
+<!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Dashboard</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+      <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+    </div>
+    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+      <span data-feather="calendar" class="align-text-bottom"></span>
+      This week
+    </button>
+  </div>
+</div>
+
+<div class="container-fluid pt-4">
+  <div class="row g-4">
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-chart-line fa-3x text-white"></i>
+        <div class="ms-3 text-white">
+          <p class="mb-2">Entradas Vendidos</p>
+          <h6 class="mb-0">90</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-chart-bar fa-3x text-white"></i>
+        <div class="ms-3 text-white">
+          <p class="mb-2">Venta actual</p>
+          <h6 class="mb-0">$200</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-chart-area fa-3x text-white"></i>
+        <div class="ms-3 text-white">
+          <p class="mb-2">Meta diaria</p>
+          <h6 class="mb-0">$500</h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+      <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+        <i class="fa fa-chart-pie fa-3x text-white"></i>
+        <div class="ms-3">
+          <p class="mb-2">Meta mensual</p>
+          <h6 class="mb-0">$10000</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid py-4">
+  <div class="row g-4">
+    <div class="col-sm-12 col-xl-6">
+      <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h6 class="mb-0">Boletos vendidos</h6>
+        </div>
+          <app-line-chart class="w-full h-full"></app-line-chart>
+      </div>
+    </div>
+    <div class="col-sm-12 col-xl-6">
+      <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h6 class="mb-0">Películas populares</h6>
+        </div>
+        <app-bar-chart class="w-full h-full"></app-bar-chart>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid pb-5">
+  <div class="bg-white shadow text-center rounded p-4">
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <h6 class="mb-0">Reservas</h6>
+      <span>27/01/2023</span>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Código</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Película</th>
+            <th scope="col">Artículos</th>
+            <th scope="col">Fecha / hora</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>BOL-0100</td>
+            <td>172539389</td>
+            <td>Avatar 2</td>
+            <td>5</td>
+            <td>27/01/2023 12:00</td>
+            <td>$34.50</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>BOL-0101</td>
+            <td>172559389</td>
+            <td>Pinocho</td>
+            <td>5</td>
+            <td>27/01/2023 1:00</td>
+            <td>$33.50</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>BOL-0102</td>
+            <td>172539389</td>
+            <td>Jurassic World</td>
+            <td>8</td>
+            <td>27/01/2023 2:00</td>
+            <td>$50.50</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>BOL-0103</td>
+            <td>172539389</td>
+            <td>Avengers: Endgame</td>
+            <td>5</td>
+            <td>27/01/2023 4:00</td>
+            <td>$12.50</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>BOL-0104</td>
+            <td>172539389</td>
+            <td>Harry Potter y la Piedra Filosofal</td>
+            <td>7</td>
+            <td>27/01/2023 5:00</td>
+            <td>$32.50</td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td>BOL-0105</td>
+            <td>172539389</td>
+            <td>El Rey León</td>
+            <td>9</td>
+            <td>27/01/2023 5:00</td>
+            <td>$82.50</td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td>BOL-0106</td>
+            <td>172539389</td>
+            <td>La La Land</td>
+            <td>3</td>
+            <td>27/01/2023 6:00</td>
+            <td>$52.50</td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>BOL-0107</td>
+            <td>172539389</td>
+            <td>La Liga de la Justicia</td>
+            <td>4</td>
+            <td>27/01/2023 6:00</td>
+            <td>$42.50</td>
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td>BOL-0108</td>
+            <td>172539389</td>
+            <td>El Señor de los Anillos</td>
+            <td>2</td>
+            <td>27/01/2023 7:00</td>
+            <td>$25.50</td>
+          </tr>
+          <tr>
+            <th scope="row">10</th>
+            <td>BOL-0109</td>
+            <td>172539389</td>
+            <td>Star Wars: Episodio IX</td>
+            <td>6</td>
+            <td>27/01/2023 7:00</td>
+            <td>$23.50</td>
+          </tr>
+          <tr>
+            <th scope="row">11</th>
+            <td>BOL-0110</td>
+            <td>172539389</td>
+            <td>El Gran Hotel Budapest</td>
+            <td>2</td>
+            <td>27/01/2023 9:00</td>
+            <td>$22.50</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+ -->
+
+
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="page-title-box">
+      <h4 class="page-title">Dashboard</h4>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-5 col-lg-6">
+
+      <div class="row gy-5">
+        <div class="col-lg-6">
+          <div class="card widget-flat">
+            <div class="card-body">
+              <div class="float-end">
+                <i class="bi bi-ticket-perforated widget-icon"></i>
+              </div>
+              <h5 class="text-muted fw-normal mt-0" title="Number of Customers">Boletos Vendidos</h5>
+              <h3 class="mt-3 mb-3">380</h3>
+              <p class="mb-0 text-muted">
+                <span class="text-success me-2"><i class="bi bi-calendar-event"></i> Hoy</span>
+                <span class="text-nowrap">01/02/2022</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card widget-flat">
+            <div class="card-body">
+              <div class="float-end">
+                <i class="bi bi-film widget-icon"></i>
+              </div>
+              <h5 class="text-muted fw-normal mt-0" title="Number of Orders">Película Popular</h5>
+              <h3 class="mt-3 mb-3">Avatar 2</h3>
+              <p class="mb-0 text-muted">
+                <span class="text-success me-2"><i class="fa-regular fa-eye"></i> 10500</span>
+                <span class="text-nowrap">Visualizaciones</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card widget-flat">
+            <div class="card-body">
+              <div class="float-end">
+                <i class="bi bi-cash widget-icon"></i>
+              </div>
+              <h5 class="text-muted fw-normal mt-0" title="Average Revenue">Meta diaria</h5>
+              <h3 class="mt-3 mb-3">$5,530</h3>
+              <p class="mb-0 text-muted">
+                <span class="text-danger me-2"><i class="fa-solid fa-down-long"></i> $6.000</span>
+                <span class="text-nowrap">Meta definida</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card widget-flat">
+            <div class="card-body">
+              <div class="float-end">
+                <i class="bi bi-cash-coin widget-icon"></i>
+              </div>
+              <h5 class="text-muted fw-normal mt-0" title="Growth">Meta mensual</h5>
+              <h3 class="mt-3 mb-3">$7.311</h3>
+              <p class="mb-0 text-muted">
+                <span class="text-danger me-2"><i class="fa-solid fa-down-long"></i> $10.000</span>
+                <span class="text-nowrap">Meta definida</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-xl-7 col-lg-6">
+      <div class="card card-h-100">
+        <div class="card-body">
+          <h4 class="header-title mb-3">Películas populares</h4>
+          <div dir="ltr">
+            <app-bar-chart class="w-full h-full"></app-bar-chart>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="header-title mb-3">Boletos vendidos</h4>
+          <div dir="ltr">
+            <app-line-chart class="w-full h-full"></app-line-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="header-title mt-2 mb-3">Top Selling Products</h4>
+
+          <div class="table-responsive">
+            <table class="table table-centered table-nowrap table-hover mb-0">
+              <tbody>
+                <tr>
+                  <th>1</th>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">BOL-0100</h5>
+                    <span class="text-muted font-13">27 Enero 2023 12:00</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">172539389</h5>
+                    <span class="text-muted font-13">Identificación</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">Avatar 2</h5>
+                    <span class="text-muted font-13">Pelicula</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">5</h5>
+                    <span class="text-muted font-13">Articulos</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">$34.50</h5>
+                    <span class="text-muted font-13">precio</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th>2</th>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">BOL-0101</h5>
+                    <span class="text-muted font-13">27 Enero 2023 1:00</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">172559389</h5>
+                    <span class="text-muted font-13">Identificación</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">Pinocho</h5>
+                    <span class="text-muted font-13">Pelicula</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">5</h5>
+                    <span class="text-muted font-13">Articulos</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">$33.50</h5>
+                    <span class="text-muted font-13">precio</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th>3</th>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">BOL-0102</h5>
+                    <span class="text-muted font-13">27 Enero 2023 2:00</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">172539389</h5>
+                    <span class="text-muted font-13">Identificación</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">Jurassic World</h5>
+                    <span class="text-muted font-13">Pelicula</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">5</h5>
+                    <span class="text-muted font-13">Articulos</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">$32.50</h5>
+                    <span class="text-muted font-13">precio</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th>4</th>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">BOL-0103</h5>
+                    <span class="text-muted font-13">27 Enero 2023 3:00</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">172539389</h5>
+                    <span class="text-muted font-13">Identificación</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">El Señor de los Anillos</h5>
+                    <span class="text-muted font-13">Pelicula</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">5</h5>
+                    <span class="text-muted font-13">Articulos</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">$31.50</h5>
+                    <span class="text-muted font-13">precio</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th>5</th>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">BOL-0104</h5>
+                    <span class="text-muted font-13">27 Enero 2023 4:00</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">172539389</h5>
+                    <span class="text-muted font-13">Identificación</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">Avatar 2</h5>
+                    <span class="text-muted font-13">Pelicula</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">5</h5>
+                    <span class="text-muted font-13">Articulos</span>
+                  </td>
+                  <td>
+                    <h5 class="font-14 my-1 fw-normal">$30.50</h5>
+                    <span class="text-muted font-13">precio</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

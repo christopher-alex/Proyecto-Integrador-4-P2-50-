@@ -1,0 +1,264 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+        <div class="page-title-right">
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item"><a href="/layout/dashboard"><i class="bi bi-house"></i></a></li>
+            <li class="breadcrumb-item"><a href="/layout/movies">Películas</a></li>
+            <li class="breadcrumb-item active">Formulario</li>
+            <li *ngIf="currentMovie.title" class="breadcrumb-item active">{{ currentMovie.title }}</li>
+          </ol>
+        </div>
+        <h4 class="page-title">{{title}}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body p-0 overflow-hidden">
+          <div class="w-full d-flex justify-content-between align-items-start ">
+            <!--    <div>
+              <h4 class="header-title">Indicaciones:</h4>
+              <p class="text-muted font-14">
+                <span *ngIf="currentMovie._id">
+                  Este formulario permite <code>actualizar</code> una película.
+                </span>
+                <span *ngIf="!currentMovie._id">
+                  Este formulario permite <code>crear</code> una película.
+                </span>
+                Para ello, debes completar los campos requeridos y presionar el botón <code>Guardar</code>.
+              </p>
+            </div> -->
+            <div class="d-flex justify-content-center align-items-center">
+              <span *ngIf="currentMovie.updatedAt == currentMovie.createdAt && currentMovie._id"
+                class="badge bg-dark p-2"><i class="bi bi-clock mr-1"></i> Creado {{currentMovie.createdAt |
+                TimeAgo}} </span>
+              <span *ngIf="currentMovie.updatedAt != currentMovie.createdAt" class="badge bg-dark p-2"><i
+                  class="bi bi-clock mr-1"></i> Actualizado
+                {{currentMovie.updatedAt | TimeAgo}}
+              </span>
+            </div>
+          </div>
+          <form class="flex flex-col gap-4 rounded-2" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+            <div class="position-relative">
+              <div *ngIf="urlBackdropValid" class="movie-backdrop"
+                [ngStyle]="{ 'background-image':
+                'url(' + (!currentMovie.backdrop ? 'https://placehold.jp/a9bdbd/ffffff/1920x1080.png?text=portada&css=%7B%22font-size%22%3A%2270px%22%2C%22color%22%3A%22%23667c83%22%7D': currentMovie.backdrop) + ')' }">
+                }">
+              </div>
+              <div *ngIf="!urlBackdropValid" class="movie-backdrop"
+                [ngStyle]="{ 'background-image':
+                              'url(https://placehold.jp/a9bdbd/ffffff/1920x1080.png?text=portada&css=%7B%22font-size%22%3A%2270px%22%2C%22color%22%3A%22%23667c83%22%7D)' }">
+                }">
+              </div>
+
+              <div class="form-group position-absolute top-0 end-0 m-2 col-3 bg-transparent">
+                <input type="text" class="form-control" id="backdrop" name="backdrop" formControlName="backdrop"
+                  placeholder="Link de fondo"
+                  [ngClass]="{ 'is-invalid':submitted || formGroup.get('backdrop')?.invalid && formGroup.get('backdrop')?.touched }">
+                <div *ngIf="submitted && formGroup.get('backdrop')?.invalid || formGroup.get('backdrop')?.touched"
+                  class="invalid-feedback">
+                  <div *ngIf="formGroup.get('backdrop')?.hasError('required')">Este campo es requerido</div>
+                  <div *ngIf="formGroup.get('backdrop')?.hasError('invalidUrl')">El link no es válido</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row contenedor position-relative">
+              <div class="col-3">
+                <div class="poster">
+                  <img *ngIf="urlPosterValid"
+                    src="{{ !currentMovie.poster ? 'https://placehold.jp/a9bdbd/ffffff/300x500.png?text=img&css=%7B%22font-size%22%3A%2270px%22%2C%22color%22%3A%22%23667c83%22%7D' : currentMovie.poster}}"
+                    alt="{{ currentMovie.title }}" class="moviegrid-poster img-fluid" />
+                  <img *ngIf="!urlPosterValid"
+                    src="https://placehold.jp/a9bdbd/ffffff/300x500.png?text=img&css=%7B%22font-size%22%3A%2270px%22%2C%22color%22%3A%22%23667c83%22%7D"
+                    alt="{{ currentMovie.title }}" class="moviegrid-poster img-fluid" />
+                </div>
+                <div>
+                  <div class="form-group">
+                    <label for="poster" class="form-label mt-3">Portada</label>
+                    <input type="text" class="form-control" id="poster" name="poster" formControlName="poster"
+                      placeholder="Link de portada"
+                      [ngClass]="{ 'is-invalid':submitted || formGroup.get('poster')?.invalid && formGroup.get('poster')?.touched }">
+                    <div *ngIf="submitted && formGroup.get('poster')?.invalid || formGroup.get('poster')?.touched"
+                      class="invalid-feedback">
+                      <div *ngIf="formGroup.get('poster')?.hasError('required')">Este campo es requerido</div>
+                      <div *ngIf="formGroup.get('poster')?.hasError('invalidUrl')">El link no es válido</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-9 row m-0 p-0">
+                <div class="form-group col-md-12 position-absolute top-0">
+                  <input type="text" class="form-control title bg-transparent border-0 bor rounded-0" id="title"
+                    name="title" formControlName="title"
+                    [ngClass]="{ 'is-invalid':submitted || formGroup.get('title')?.invalid && formGroup.get('title')?.touched }">
+                  <div *ngIf="submitted && formGroup.get('title')?.invalid || formGroup.get('title')?.touched"
+                    class="invalid-feedback">
+                    <div *ngIf="formGroup.get('title')?.hasError('minlength')">El titulo debe tener al menos 3
+                      caracteres</div>
+                    <div *ngIf="formGroup.get('title')?.hasError('maxlength')">El titulo debe tener menos de 50
+                      caracteres</div>
+                    <div *ngIf="formGroup.get('title')?.hasError('required')">Este campo es requerido</div>
+                  </div>
+                </div>
+
+                <div class="p-3 mt-video">
+                  <div class="ratio ratio-16x9 w-100">
+                    <iframe *ngIf="currentMovie.trailer" width="560" height="315" [src]="getPreviewUrl()"
+                      title="YouTube video player" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+                    <img *ngIf="!currentMovie.trailer"
+                      src="https://placehold.jp/a9bdbd/ffffff/1920x1080.png?text=video&css=%7B%22font-size%22%3A%2270px%22%2C%22color%22%3A%22%23667c83%22%7D"
+                      class="img-fluid" />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="trailer" class="form-label mt-3">Trailer</label>
+                    <input type="text" class="form-control" id="trailer" name="trailer" formControlName="trailer"
+                      placeholder="Link de trailer"
+                      [ngClass]="{ 'is-invalid':submitted || formGroup.get('trailer')?.invalid && formGroup.get('trailer')?.touched }">
+                    <div *ngIf="submitted && formGroup.get('trailer')?.invalid || formGroup.get('cover')?.touched"
+                      class="invalid-feedback">
+                      <div *ngIf="formGroup.get('trailer')?.hasError('required')">Este campo es requerido</div>
+                      <div *ngIf="formGroup.get('trailer')?.hasError('invalidUrl')">El link no es válido</div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="form-group col-md-3">
+                  <label class="form-label mt-2" for="year">Año de estreno</label>
+                  <input type="text" class="form-control" id="year" name="year" formControlName="year"
+                    [ngClass]="{ 'is-invalid':submitted || formGroup.get('year')?.invalid && formGroup.get('year')?.touched }">
+                  <div *ngIf="submitted && formGroup.get('year')?.invalid || formGroup.get('year')?.touched"
+                    class="invalid-feedback">
+                    <div *ngIf="formGroup.get('year')?.hasError('min')">El año debe ser mayor a 1900</div>
+                    <div *ngIf="formGroup.get('year')?.hasError('max')">El año debe ser menor a {{currentYear}}
+                    </div>
+                    <div *ngIf="formGroup.get('year')?.hasError('required')">Este campo es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label class="form-label mt-2">Duración de la película</label>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="duration" name="duration" formControlName="duration"
+                        [ngClass]="{ 'is-invalid':submitted || formGroup.get('duration')?.invalid && formGroup.get('duration')?.touched }">
+                      <span class="input-group-text">min</span>
+                      <div *ngIf="submitted && formGroup.get('duration')?.invalid || formGroup.get('duration')?.touched"
+                        class="invalid-feedback">
+                        <div *ngIf="formGroup.get('duration')?.hasError('min')">La duración debe ser mayor a 0
+                        </div>
+                        <div *ngIf="formGroup.get('duration')?.hasError('max')">La duración debe ser menor a 300
+                        </div>
+                        <div *ngIf="formGroup.get('duration')?.hasError('required')">Este campo es requerido</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="genre" class="form-label mt-2">Género</label>
+                  <select class="form-select" id="genre" name="genre" formControlName="genre"
+                    [ngClass]="{ 'is-invalid':submitted || formGroup.get('genre')?.invalid && formGroup.get('genre')?.touched }">
+                    <option value=" "></option>
+                    <option value="Acción">Acción</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="Comedia">Comedia</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Fantasía">Fantasía</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Terror">Terror</option>
+                  </select>
+                  <div *ngIf="submitted && formGroup.get('genre')?.invalid || formGroup.get('genre')?.touched"
+                    class="invalid-feedback">
+                    <div *ngIf="formGroup.get('genre')?.hasError('required')">Este campo es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label class="form-label mt-2" for="directors">Directores</label>
+                  <input type="text" class="form-control" id="directors" name="directors" formControlName="directors"
+                    [ngClass]="{ 'is-invalid':submitted || formGroup.get('directors')?.invalid && formGroup.get('directors')?.touched }">
+                  <div *ngIf="submitted && formGroup.get('directors')?.invalid || formGroup.get('directors')?.touched"
+                    class="invalid-feedback">
+                    <div *ngIf="formGroup.get('actors')?.hasError('minlength')">
+                      Al menos un actor debe ingresar 3 caracteres</div>
+                    <div *ngIf="formGroup.get('actors')?.hasError('maxlength')">
+                      Se ha excedido el límite de caracteres permitidos (100)</div>
+                    <div *ngIf="formGroup.get('directors')?.hasError('required')">Este campo es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label class="form-label mt-2" for="actors">Actores</label>
+                  <input type="text" class="form-control" id="actors" name="actors" formControlName="actors"
+                    [ngClass]="{ 'is-invalid':submitted || formGroup.get('actors')?.invalid && formGroup.get('actors')?.touched }">
+                  <div *ngIf="submitted && formGroup.get('actors')?.invalid || formGroup.get('actors')?.touched"
+                    class="invalid-feedback">
+                    <div *ngIf="formGroup.get('actors')?.hasError('minlength')">
+                      Al menos un actor debe ingresar 3 caracteres</div>
+                    <div *ngIf="formGroup.get('actors')?.hasError('maxlength')">
+                      Se ha excedido el límite de caracteres permitidos (100)</div>
+                    <div *ngIf="formGroup.get('actors')?.hasError('required')">Este campo es requerido</div>
+                  </div>
+                </div>
+
+
+                <div class="form-group col-md-12">
+                  <label for="synopsis" class="form-label mt-2">Sinopsis</label>
+                  <textarea class="form-control" id="synopsis" rows="3" style="height: 175px; resize: none;"
+                    formControlName="synopsis" [ngClass]="{ 'is-invalid':submitted || formGroup.get('synopsis')?.invalid && formGroup.get('synopsis')?.touched }
+                                    "></textarea>
+                  <div *ngIf="submitted && formGroup.get('synopsis')?.invalid || formGroup.get('synopsis')?.touched"
+                    class="invalid-feedback">
+                    <div *ngIf="formGroup.get('synopsis')?.hasError('minlength')">La sinopsis debe tener al menos 3
+                      caracteres</div>
+                    <div *ngIf="formGroup.get('synopsis')?.hasError('maxlength')">La sinopsis debe tener menos de 500
+                      caracteres </div>
+                    <div *ngIf="formGroup.get('synopsis')?.hasError('required')">Este campo es requerido</div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-100 my-5 py-2 d-flex justify-content-between">
+                <div>
+                  <button routerLink="/layout/movies" type="submit" class="btn btn-dark">Cancelar</button>
+                </div>
+                <div class="d-flex align-items-center justify-content-center gap-3">
+                  <button *ngIf="currentMovie._id" type="button" class="btn btn-danger" data-bs-toggle="modal"
+                    data-bs-target="#danger-alert-modal">Eliminar</button>
+                  <button [disabled]="!formGroup.valid" type="submit" class="btn btn-success">
+                    <span *ngIf="!currentMovie._id">Crear</span>
+                    <span *ngIf="currentMovie._id">Actualizar</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="danger-alert-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content modal-filled bg-danger">
+      <div class="modal-body p-4">
+        <div class="text-center">
+          <i class="bi bi-exclamation-triangle h1"></i>
+          <h4 class="mt-2">¿Estás seguro de eliminar esta película?</h4>
+          <p class="mt-3">
+            Esta acción no se puede deshacer.
+          </p>
+          <button (click)="deleteMovie()" type="button" class="btn btn-light my-2" data-bs-dismiss="modal">
+            Continuar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

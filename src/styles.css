@@ -1,0 +1,30 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+@import "bootswatch/dist/solar/bootstrap.min.css";
+/* Desactiva el desplazamiento vertical */
+body {
+  overflow-y: hidden;
+}
+
+/* Aplica el estilo a la barra de desplazamiento */
+::-webkit-scrollbar {
+  width: 15px;
+  background-color: #1e434a;
+}
+
+/* Aplica el estilo a la barra de progreso */
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #a9bdbd;
+}
+
+/* Oculta el botón de desplazamiento */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Oculta el botón de desplazamiento */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

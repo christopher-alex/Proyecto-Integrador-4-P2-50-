@@ -1,0 +1,54 @@
+.cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.movie-backdrop {
+  height: 300px;
+  width: 100%;
+  background: center -200px transparent no-repeat;
+  background-size: cover;
+  position: relative;
+  border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -ms-border-radius: 5px 5px 0 0;
+  -o-border-radius: 5px 5px 0 0;
+  box-shadow: 0 0 60px 1px #00000099;
+}
+.movie-backdrop:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(#002b3676, #001e2596);
+  backdrop-filter: blur(5px);
+  border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -ms-border-radius: 5px 5px 0 0;
+  -o-border-radius: 5px 5px 0 0;
+}
+
+.contenedor {
+  margin-top: -80px;
+  padding: 0 5rem;
+  position: relative;
+}
+
+.mt-video
+{
+  margin-top: 100px;
+}
+
+.title{
+  font-size: 2rem !important;
+  font-weight: 600;
+  color: #fff;
+}

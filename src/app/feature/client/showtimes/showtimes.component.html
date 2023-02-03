@@ -1,0 +1,38 @@
+<div *ngIf="movie">
+  <div class="movie-backdrop" [ngStyle]="{ 'background-image': 'url(https://www.cinextecuador.com/IT-CDN/Themes/_default/Images/Carousel/carousel-05.jpg)' }"></div>
+  <div class="container">
+    <div class="movie-data row">
+      <div class="col-md-4 px-5">
+        <div class="movie-poster">
+          <img class="img-fluid" src="{{ movie.poster }}" alt="{{ movie.title }}" />
+        </div>
+      </div>
+      <div class="col-md-8 position-relative">
+        <h2 class="movie-title">{{ movie.title }}</h2>
+        <div class="movie-info">
+          <div class="ratio ratio-16x9">
+            <iframe width="560" height="315" [src]="getPreviewUrl()" title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <p class="movie-overview">{{ movie.synopsis }}</p>
+          <div class="movie-meta">
+            <dl class="movie meta-director">
+              <dt>Director:</dt>
+              <dd>{{ movie.directors }}</dd>
+            </dl>
+            <dl class="movie-meta-cast">
+              <dt>Starring:</dt>
+              <dd>{{ movie.actors }}</dd>
+            </dl>
+            <dl class="movie-meta-runtime">
+              <dt>Running Time:</dt>
+              <dd>{{ movie.duration }}</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
