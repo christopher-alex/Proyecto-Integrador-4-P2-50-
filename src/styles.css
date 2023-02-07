@@ -1,5 +1,6 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
-@import "bootswatch/dist/solar/bootstrap.min.css";
+@import "bootswatch/dist/Superhero/bootstrap.min.css";
+
 /* Desactiva el desplazamiento vertical */
 body {
   overflow-y: hidden;
@@ -7,8 +8,8 @@ body {
 
 /* Aplica el estilo a la barra de desplazamiento */
 ::-webkit-scrollbar {
-  width: 15px;
-  background-color: #1e434a;
+  width: 7px;
+  background-color: #20374c;
 }
 
 /* Aplica el estilo a la barra de progreso */
@@ -26,5 +27,6 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* Oculta el botón de desplazamiento */
 input[type="number"] {
+  appearance: textfield;
   -moz-appearance: textfield;
 }

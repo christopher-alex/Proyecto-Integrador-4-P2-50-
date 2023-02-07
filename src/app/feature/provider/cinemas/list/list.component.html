@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+        <div class="page-title-right">
+          <ol class="breadcrumb m-0 bg-body py-3">
+            <li class="breadcrumb-item">
+              <a href="/layout/dashboard"><i class="bi bi-house"></i></a>
+            </li>
+            <li class="breadcrumb-item active">Cinemas</li>
+          </ol>
+        </div>
+        <h4 class="page-title">Cinemas</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="row mb-2 flex justify-content-between">
+        <div class="col-sm-4">
+          <a
+            class="btn btn-outline-secondary mb-2"
+            routerLink="/layout/cinemas/form"
+            [queryParams]="{ returnUrl: '/cinemas' }"
+            ><i class="bi bi-plus-circle me-2"></i> Agregar Cinema</a
+          >
+        </div>
+        <div class="col-sm-4">
+          <input
+            #search
+            type="search"
+            class="form-control bg-dark text-white-50"
+            placeholder="Buscar ..."
+          />
+        </div>
+      </div>
+      <span class="badge bg-dark my-4 p-2">
+        <i class="bi bi-grid-3x2-gap mr-2"></i>
+        {{ cinemas.length }}
+        <span>Cinemas</span>
+      </span>
+      <div class="moviegrid">
+        <div
+          *ngFor="let cinema of cinemas"
+          class="moviegrid-item"
+          routerLink="/layout/cinemas/form/{{ cinema._id }}"
+          [queryParams]="{ returnUrl: '/cinemas' }"
+        >
+        <img
+            src="{{ cinema.image }}"
+            alt="{{ cinema.name }}"
+            class="moviegrid-poster img-fluid"
+          />
+          <h3 class="moviegrid-title mt-2 font-16">{{ cinema.name }}</h3>
+        </div>
+      </div>
+      <div *ngIf="!cinemas || cinemas.length === 0" class="no-content">
+        <p>No se encontraron resultados</p>
+      </div>
+    </div>
+  </div>
+</div>

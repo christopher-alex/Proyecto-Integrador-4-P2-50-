@@ -46,6 +46,8 @@ export class ShowtimesComponent implements OnInit {
 
   getEmbedUrl(url: string) {
     return url.replace(
+
+      
       'https://www.youtube.com/watch?v=',
       'https://www.youtube.com/embed/'
     );

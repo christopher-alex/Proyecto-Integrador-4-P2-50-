@@ -1,0 +1,21 @@
+.mt-64-8 {
+margin-top: 64.8px;
+}
+
+.top-64-7 {
+top: 64px;
+}
+
+.z-index-10
+{
+z-index: 10000;
+}
+
+.container-fluid {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.vh-100-calc {
+  height: calc(100vh - 64.8px);
+}

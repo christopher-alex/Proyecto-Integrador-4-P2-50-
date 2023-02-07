@@ -45,7 +45,7 @@ export class MoviesListComponent implements OnInit {
    * Método `getMovieByTitle` que obtiene una película por su título a través del servicio `moviesService`.
    * @param title Título de la película a buscar.
    */
-  getMovieByTitle(title: string): void {
+  getMoviesByTitle(title: string): void {
     if (title === '') {
       this.getMovies();
       return;

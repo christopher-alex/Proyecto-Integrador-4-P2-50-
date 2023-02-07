@@ -1,0 +1,24 @@
+#sidebar li{
+  cursor: pointer;
+}
+
+#sidebar li:hover{
+  background: #0f253760;
+  color: white;
+}
+
+#sidebar li.active{
+  background: #0f2537;
+  color: white;
+  pointer-events: none;
+}
+
+#sidebar li a{
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.mt-32{
+    margin-top: 2rem;
+}
+

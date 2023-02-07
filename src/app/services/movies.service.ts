@@ -70,7 +70,7 @@ export class MoviesService {
    * @param id ID de la película a actualizar.
    * @param movie Datos actualizados de la película.
    */
-  updateMovie(id: string, movie: any): Observable<Movie> {
+  updateMovie(id: string, movie: Movie): Observable<Movie> {
     return this.http.put<Movie>(
       `${this.API_URL}/update/${id}`,
       movie,

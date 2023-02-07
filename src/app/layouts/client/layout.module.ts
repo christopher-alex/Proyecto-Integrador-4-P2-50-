@@ -5,13 +5,18 @@ import { LayoutClientRoutingModule } from './layout-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FeatureModule } from 'src/app/feature/feature.module';
-
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    MainComponent,
+    MainComponent
   ],
-  imports: [CommonModule, FeatureModule, LayoutClientRoutingModule,],
+  imports: [
+    CommonModule,
+    FeatureModule,
+    LayoutClientRoutingModule,
+    NgxYoutubePlayerModule.forRoot(),
+  ],
 })
-export class LayoutModule {}
+export class LayoutClientModule {}

@@ -1,0 +1,77 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+        <div class="page-title-right">
+          <ol class="breadcrumb m-0 bg-body py-3">
+            <li class="breadcrumb-item">
+              <a href="/layout/dashboard"><i class="bi bi-house"></i></a>
+            </li>
+            <li class="breadcrumb-item active">Productos</li>
+          </ol>
+        </div>
+        <h4 class="page-title">Productos</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="row mb-2 flex justify-content-between">
+        <div class="col-sm-4">
+          <a
+            class="btn btn-outline-secondary mb-2"
+            routerLink="/layout/products/form"
+            [queryParams]="{ returnUrl: '/products' }"
+            ><i class="bi bi-plus-circle me-2"></i> Agregar Producto</a
+          >
+        </div>
+        <div class="col-sm-4">
+          <input
+            #search
+            (keyup)="getProductsByName(search.value)"
+            type="search"
+            class="form-control bg-dark text-white-50"
+            placeholder="Buscar ..."
+          />
+        </div>
+      </div>
+      <span class="badge bg-dark my-4 p-2"
+        ><i class="las la-hotdog mr-2"></i> {{ products.length }}
+        <span>Productos</span>
+      </span>
+      <div class="moviegrid">
+        <div
+          class="card cta-box bg-dark text-white"
+          *ngFor="let product of products"
+          routerLink="/layout/products/form/{{ product._id }}"
+          [queryParams]="{ returnUrl: '/products' }"
+        >
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="w-100 overflow-hidden">
+                <h5 class="mt-0">{{ product.name }}</h5>
+                <h6 class="m-0 my-2 fw-normal text-white-50">
+                  {{ product.description }}
+                </h6>
+                <h6 class="m-0 fw-bold text-primary">
+                  $ {{ product.price | price }}
+                </h6>
+              </div>
+              <img
+                class="ms-3"
+                src="{{ product.image }}"
+                width="120"
+                alt="Generic placeholder image"
+              />
+            </div>
+          </div>
+          <!-- end card-body -->
+        </div>
+        <!-- end card-->
+      </div>
+      <div *ngIf="!products || products.length === 0" class="no-content">
+        <p>No se encontraron resultados</p>
+      </div>
+    </div>
+  </div>
+</div>

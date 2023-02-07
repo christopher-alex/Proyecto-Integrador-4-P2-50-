@@ -1,0 +1,97 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+        <div class="page-title-right">
+          <ol class="breadcrumb m-0 bg-body py-3">
+            <li class="breadcrumb-item">
+              <a href="/layout/dashboard"><i class="bi bi-house"></i></a>
+            </li>
+            <li class="breadcrumb-item active">Proyecciones</li>
+          </ol>
+        </div>
+        <h4 class="page-title">Proyecciones</h4>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="row mb-2 flex justify-content-between">
+        <div class="col-sm-4">
+          <!-- <a
+            class="btn btn-outline-secondary mb-2"
+            routerLink="/layout/showtimes/form"
+            [queryParams]="{ returnUrl: '/showtimes' }"
+            ><i class="bi bi-plus-circle me-2"></i> Agregar Proyección</a
+          > -->
+
+          <div class="dropdown">
+            <a
+              class="btn btn-outline-secondary mb-2 dropdown-toggle"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              ><i class="bi bi-plus-circle me-2"></i> Agregar Proyección</a
+            >
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a *ngFor="let movie of movies" class="dropdown-item" href="/layout/showtimes/movie/{{movie._id}}">
+                <img class="miniatura-select" src="{{movie.poster}}" alt="">
+                {{movie.title}}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <input
+            #search
+            type="search"
+            class="form-control bg-dark text-white-50"
+            placeholder="Buscar ..."
+          />
+        </div>
+      </div>
+      <span class="badge bg-dark my-4 p-2"
+        ><i class="bi bi-film mr-2"></i> {{ showtimes.length }}
+        <span>Proyecciones</span>
+      </span>
+      <div
+        class="card cta-box bg-dark text-white"
+        *ngFor="let showtime of showtimes"
+        routerLink="/layout/showtimes/movie/{{ showtime.movie._id }}"
+        [queryParams]="{ returnUrl: '/showtimes' }"
+      >
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <img
+              *ngIf="showtime"
+              src="{{
+                showtime.movie.poster
+                  ? showtime.movie.poster
+                  : 'https://via.placeholder.com/120x180'
+              }}"
+              width="120"
+              alt="Generic placeholder image"
+            />
+            <div class="w-100 overflow-hidden mx-4">
+              <h5 class="mt-0">{{ showtime.movie.title }}</h5>
+              <h6 class="m-0 my-2 fw-normal text-white-50">
+                {{ showtime.date | date : "dd/MM/yyyy" }}
+              </h6>
+
+              <span class="badge badge-outline-primary rounded-3">{{
+                showtime.time | date : "HH:mm"
+              }}</span>
+            </div>
+          </div>
+        </div>
+        <!-- end card-body -->
+      </div>
+      <!-- end card-->
+      <div *ngIf="!showtimes || showtimes.length === 0" class="no-content">
+        <p>No se encontraron resultados</p>
+      </div>
+    </div>
+  </div>
+</div>

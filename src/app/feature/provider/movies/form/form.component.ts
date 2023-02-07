@@ -5,7 +5,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription, of } from 'rxjs';
 import { Movie } from '../../../../models/movie';
 import { MoviesService } from '../../../../services/movies.service';
-import { DomSanitizer } from '@angular/platform-browser';
 import { map, catchError } from 'rxjs/operators';
 @Component({
   selector: 'app-form',
@@ -36,6 +35,7 @@ export class MoviesFormComponent implements OnInit, OnDestroy {
   // Flag que indica si la URL de la portada es válida
   urlPosterValid = false;
   urlBackdropValid = false;
+  urlTrailerValid = false;
 
   // Grupo de validación de formularios
   formGroup: FormGroup;
@@ -54,7 +54,6 @@ export class MoviesFormComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private sanitizer: DomSanitizer
   ) {
     this.initForm();
   }
@@ -148,6 +147,18 @@ export class MoviesFormComponent implements OnInit, OnDestroy {
         }
       });
     });
+    this.formGroup.controls['trailer'].valueChanges.subscribe((value) => {
+      const validId = /^[a-zA-Z0-9_-]{11}$/.test(value);
+
+        if (validId) {
+          this.urlTrailerValid = true;
+          this.formGroup.controls['trailer'].setErrors(null);
+        } else {
+          this.urlTrailerValid = false;
+          this.formGroup.controls['trailer'].setErrors({ invalidID: true });
+        }
+
+    });
   }
 
   /**
@@ -208,20 +219,8 @@ export class MoviesFormComponent implements OnInit, OnDestroy {
   verifyUrl(url: string): Observable<boolean> {
     return this.http.head(url, { observe: 'response' }).pipe(
       map((response) => response.status >= 200 && response.status < 300),
+
       catchError((error) => of(false))
-    );
-  }
-
-  getPreviewUrl() {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(
-      this.getEmbedUrl(this.currentMovie.trailer)
-    );
-  }
-
-  getEmbedUrl(url: string) {
-    return url.replace(
-      'https://www.youtube.com/watch?v=',
-      'https://www.youtube.com/embed/'
     );
   }
 
