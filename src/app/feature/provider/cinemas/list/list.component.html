@@ -42,7 +42,7 @@
       <div class="moviegrid">
         <div
           *ngFor="let cinema of cinemas"
-          class="moviegrid-item"
+          class="moviegrid-item bg-dark"
           routerLink="/layout/cinemas/form/{{ cinema._id }}"
           [queryParams]="{ returnUrl: '/cinemas' }"
         >

@@ -2,8 +2,7 @@
   <div
     class="movie-backdrop"
     [ngStyle]="{
-      'background-image':
-        'url(https://movie.thaiware.com/upload_misc/movie/2021_12/review/137269_211218201253MY.png)'
+      'background-image': 'url(' + movie.poster + ')'
     }"
   ></div>
   <div class="container">
@@ -30,15 +29,14 @@
             <dd>{{ movie.duration }}</dd>
           </dl>
         </div>
-
       </div>
-      <div class="col-md-8 position-relative bg-gradient rounded-2">
+      <div class="col-md-8 position-relative bg-gradient">
         <h2 class="movie-title">{{ movie.title }}</h2>
         <div class="movie-info">
           <div class="ratio ratio-16x9">
             <youtube-player
               [width]="855"
-              [height]="400"
+              [height]="500"
               [videoId]="getEmbedUrl(movie.trailer)"
             ></youtube-player>
           </div>
@@ -50,13 +48,16 @@
               <h3 class="movie-title1">Funciones</h3>
             </div>
             <div class="session">
-                <h4 class="session-date">miércoles, 09 de marzo 2023</h4>
+              <h4 class="session-date">miércoles, 09 de marzo 2023</h4>
               <div class="session-time">
                 <a href="" class="session-time">
-                  <img src="	https://www.cinextecuador.com/CDN/media/entity/get…/DOB?referenceScheme=Global&allowPlaceHolder=true" alt="">
+                  <img
+                    src="	https://www.cinextecuador.com/CDN/media/entity/get…/DOB?referenceScheme=Global&allowPlaceHolder=true"
+                    alt=""
+                  />
 
-                    <time datetime="2023-02-08T14:00:00">02:0 p.m.</time>
-</a>
+                  <time datetime="2023-02-08T14:00:00">02:0 p.m.</time>
+                </a>
               </div>
             </div>
           </div>

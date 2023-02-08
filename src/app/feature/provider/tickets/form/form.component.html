@@ -1,51 +1,95 @@
-<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-    <label for="type">Tipo</label>
-    <input
-      type="text"
-      class="form-control"
-      id="type"
-      formControlName="type"
-      placeholder="Enter type"
-    />
-  </div>
-  <div class="form-group">
-    <label for="price">Precio</label>
-    <input
-      type="number"
-      class="form-control"
-      id="price"
-      formControlName="price"
-      placeholder="Enter price"
-    />
-  </div>
-  <div class="w-100 my-5 d-flex justify-content-between align-items-center">
-    <div>
-      <button routerLink="/layout/tickets" type="submit" class="btn btn-dark">
-        Cancelar
-      </button>
-    </div>
-    <div class="d-flex align-items-center justify-content-center gap-3">
-      <button
-        *ngIf="currentTicket._id"
-        type="button"
-        class="btn btn-outline-danger"
-        data-bs-toggle="modal"
-        data-bs-target="#danger-alert-modal"
-      >
-        Eliminar
-      </button>
-      <button
-        [disabled]="!formGroup.valid"
-        type="submit"
-        class="btn btn-primary"
-      >
-        <span *ngIf="!currentTicket._id">Crear</span>
-        <span *ngIf="currentTicket._id">Actualizar</span>
-      </button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+        <div class="page-title-right">
+          <ol class="breadcrumb m-0 bg-body py-3">
+            <li class="breadcrumb-item">
+              <a href="/layout/dashboard"><i class="bi bi-house"></i></a>
+            </li>
+            <li class="breadcrumb-item active">Formulario</li>
+            <li *ngIf="currentTicket.type" class="breadcrumb-item active">
+              {{ currentTicket.type }}
+            </li>
+          </ol>
+        </div>
+        <h4 class="page-title">{{ title }}</h4>
+      </div>
     </div>
   </div>
-</form>
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <div class="card cta-box bg-dark text-white">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <div class="w-100 overflow-hidden">
+                <div class="form-group">
+                  <label for="type">Tipo</label>
+                  <input
+                    type="text"
+                    class="form-control bg-body text-white-50"
+                    id="type"
+                    formControlName="type"
+                    placeholder="Enter type"
+                  />
+                </div>
+                <div class="form-group mt-3">
+                  <label for="price">Precio</label>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text"
+                      ><i class="bi bi-currency-dollar"></i
+                    ></span>
+                    <input
+                      type="number"
+                      class="form-control bg-body text-white-50"
+                      id="price"
+                      formControlName="price"
+                      placeholder="Enter price"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="w-100 my-5 d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <button
+              routerLink="/layout/tickets"
+              type="submit"
+              class="btn btn-dark"
+            >
+              Cancelar
+            </button>
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-3">
+            <button
+              *ngIf="currentTicket._id"
+              type="button"
+              class="btn btn-outline-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#danger-alert-modal"
+            >
+              Eliminar
+            </button>
+            <button
+              [disabled]="!formGroup.valid"
+              type="submit"
+              class="btn btn-primary"
+            >
+              <span *ngIf="!currentTicket._id">Crear</span>
+              <span *ngIf="currentTicket._id">Actualizar</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <div
   id="danger-alert-modal"

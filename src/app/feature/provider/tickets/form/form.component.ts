@@ -100,7 +100,7 @@ export class TicketsFormComponent implements OnInit {
       if (res.status === 'success') {
         this.currentTicket = res.data.ticket;
         this.formGroup.setValue(this.currentTicket);
-        this.title = 'Editar Ticket';
+        this.title = 'Ticket: '+ this.currentTicket.type;
       }
     });
   }

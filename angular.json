@@ -15,7 +15,8 @@
           "options": {
             "allowedCommonJsDependencies": [
               "chart.js",
-              "deepmerge"
+              "crypto-js",
+              "html2canvas"
             ],
             "outputPath": "dist/cine-buy-web",
             "index": "src/index.html",

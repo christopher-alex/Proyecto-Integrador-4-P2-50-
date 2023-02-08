@@ -67,6 +67,12 @@ export class CinemasFormComponent implements OnInit {
     this.formGroup.valueChanges.subscribe((data) => {
       this.currentCinema = data;
     });
+    this.formGrid.controls['rowsNumber'].valueChanges.subscribe((value) => {
+      this.generateSeats();
+    });
+    this.formGrid.controls['columnsNumber'].valueChanges.subscribe((value) => {
+      this.generateSeats();
+    });
   }
 
   getAvailableSeats(row: any) {}
@@ -108,12 +114,13 @@ export class CinemasFormComponent implements OnInit {
       if (res.status === 'success') {
         this.currentCinema = res.data.cinema;
         this.formGroup.setValue(this.currentCinema);
-        this.title = 'Editar Cinema';
+        this.title = 'Cinema: ' + this.currentCinema.name;
       }
     });
   }
 
   createCinema() {
+    this.screen.nativeElement.style.background = '#20374c';
     html2canvas(this.screen.nativeElement).then((canvas) => {
       this.image = canvas.toDataURL();
       this.currentCinema.image = this.image;
@@ -128,11 +135,26 @@ export class CinemasFormComponent implements OnInit {
   }
 
   updateCinema() {
+    this.screen.nativeElement.style.background = '#20374c';
+    html2canvas(this.screen.nativeElement).then((canvas) => {
+      this.image = canvas.toDataURL();
+      this.currentCinema.image = this.image;
+      this.cinemasService
+        .updateCinema(this.currentCinema._id, this.currentCinema)
+        .subscribe((res: any) => {
+          if (res.status === 'success') {
+            this.router.navigate(['/layout/cinemas']);
+          }
+        });
+    });
+  }
+
+  deleteCinema(): void {
     this.cinemasService
-      .updateCinema(this.currentCinema._id, this.currentCinema)
+      .deleteCinema(this.currentCinema._id)
       .subscribe((res: any) => {
         if (res.status === 'success') {
-          this.router.navigate(['/layout/cinemas']);
+          this.router.navigate(['/layout/cinemas/list']);
         }
       });
   }
@@ -171,7 +193,8 @@ export class CinemasFormComponent implements OnInit {
   ];
 
   generateSeats() {
-    const seating_capacity = this.formGroup.get('seating_capacity')?.value;
+    this.formGroup.get('seating_capacity')?.setValue([]);
+    let seating_capacity = this.formGroup.get('seating_capacity')?.value;
 
     for (let i = 0; i < this.formGrid.get('rowsNumber')?.value; i++) {
       const row = this.rows[i];
@@ -207,10 +230,6 @@ export class CinemasFormComponent implements OnInit {
       rowSeats.seats_available.splice(element, 0, 0);
       rowSeats.seats_available.pop();
     }); */
-
-
-
-    console.log(rowSeats.seats_available);
     this.formGroup.get('seating_capacity')?.setValue(seating_capacity);
   }
 
@@ -223,5 +242,17 @@ export class CinemasFormComponent implements OnInit {
 
   getSeatIndices(row: any) {
     return Array.from(Array(row.seats).keys());
+  }
+
+  incrementRowsNumber(prop: any): void {
+    let value = this.formGrid.get(prop)?.value;
+    this.formGrid.get(prop)?.setValue(value + 1);
+    this.generateSeats();
+  }
+
+  decrementRowsNumber(prop: any): void {
+    let value = this.formGrid.get(prop)?.value;
+    this.formGrid.get(prop)?.setValue(value - 1);
+    this.generateSeats();
   }
 }

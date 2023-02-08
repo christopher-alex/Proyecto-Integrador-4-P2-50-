@@ -100,7 +100,7 @@ export class ProductsFormComponent implements OnInit {
       if (res.status === 'success') {
         this.currentProduct = res.data.product;
         this.formGroup.setValue(this.currentProduct);
-        this.title = 'Editar Cinema';
+        this.title = 'Producto: ' + this.currentProduct.name;
       }
     });
   }

@@ -12,8 +12,10 @@
   height: 100%;
   top: 0;
   left: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.8));
+  background: linear-gradient(#0f2537bf, #0f2537);
+  backdrop-filter: blur(10px);
 }
+
 .movie-data {
   margin-bottom: 60px;
 }
@@ -49,25 +51,25 @@
 }
 
 .movie-item {
-    background-color: #0000006e;
-    border: none;
-    margin-bottom: 1rem;
-    padding: 2rem;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    -ms-border-radius: 30px;
-    border-radius: 30px;
+  background-color: #0000006e;
+  border: none;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  border-radius: 30px;
 }
 
 .movie-showtimes .session .session-times .session-time img {
-    vertical-align: middle;
-    height: 16px;
+  vertical-align: middle;
+  height: 16px;
 }
 .session-time img {
-    display: none;
+  display: none;
 }
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 @media (max-width: 767px) {
   .movie-title {

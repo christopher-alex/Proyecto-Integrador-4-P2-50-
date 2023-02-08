@@ -13,6 +13,16 @@
   margin-bottom: 30px;
 }
 
+.moviegrid-item img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  max-height: 300px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
 .moviegrid-item  img:hover {
   cursor: pointer;
   transform: scale(1.03);
@@ -26,17 +36,7 @@
   -ms-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
    box-shadow: 0 0 60px 1px #00000084;
-  box-shadow: inset 0 0 100px 1px #0000003f;
-}
 
-.moviegrid-item img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  min-height: 200px;
-  max-height: 300px;
-  border-radius: 5px;
-  object-fit: cover;
 }
 
 .no-content {

@@ -1,22 +1,45 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 600000s 0s, color 600000s 0s;
+  font-size: 16px !important;
+}
+
+input:-webkit-autofill::first-line,
+input:-webkit-autofill:hover::first-line,
+input:-webkit-autofill:focus::first-line,
+input:-webkit-autofill:active::first-line {
+  font-size: 16.35px;
+  font-family: sans-serif;
+  line-height: 17px;
+}
+
+.title{
+  font-weight: 600;
+}
+
+.img-fluid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .card-body {
-  padding: 3rem 2rem;
+  padding: 3rem;
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.img-fluid {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+
 .blur {
   position: absolute;
   left: 0;
   top: 0;
   z-index: 10;
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(150px);
 
 }
 
@@ -42,8 +65,8 @@
   width: 60%;
   height: 60%;
   border-radius: 50%;
-  animation: rotate 5s linear infinite;
-  -webkit-animation: rotate 5s linear infinite;
+  animation: rotate 3s linear infinite;
+  -webkit-animation: rotate 3s linear infinite;
 }
 
 .circle1 {
@@ -53,7 +76,7 @@
   margin: auto;
   bottom: 0%;
   z-index: 2;
-  background: linear-gradient(to right, #00b3ff, #004461);
+  background: linear-gradient(to right, #00b3ff, #002a3c);
 }
 
 .circle2 {
@@ -61,14 +84,14 @@
   right: 0%;
   top: 0%;
   z-index: 3;
-  background: linear-gradient(to right, #ff00b3, #440030);
+  background: linear-gradient(to right, #ff00b3, #370027);
 }
 .circle3 {
   position: absolute;
   left: 0%;
   top: 0%;
   z-index: 4;
-  background: linear-gradient(to right, #ffbf00, #423200);
+  background: linear-gradient(to right, #ffbf00, #2f2300);
 }
 
 @keyframes rotate {
@@ -79,7 +102,3 @@
     transform: rotate(360deg);
   }
 }
-
-
-
-

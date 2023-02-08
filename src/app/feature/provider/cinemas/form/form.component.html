@@ -1,79 +1,172 @@
 <div class="container-fluid">
-  <div class="row">
+   <div class="row">
     <div class="col-12">
       <div class="page-title-box">
         <div class="page-title-right">
-          <ol class="breadcrumb m-0">
+          <ol class="breadcrumb m-0 bg-body py-3">
             <li class="breadcrumb-item">
               <a href="/layout/dashboard"><i class="bi bi-house"></i></a>
             </li>
-            <li class="breadcrumb-item active">Cinemas</li>
+            <li class="breadcrumb-item active">Formulario</li>
+            <li *ngIf="currentCinema.name" class="breadcrumb-item active">
+              {{ currentCinema.name }}
+            </li>
           </ol>
         </div>
-        <h4 class="page-title">Cinemas</h4>
+        <h4 class="page-title">{{title}}</h4>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-12">
-      <div class="bg-gradient bg-opacity-10 w-25 h-25 rounded-1 p-4">
-        <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            formControlName="name"
-          />
-          <button type="submit" class="btn btn-primary">Guardar</button>
-        </form>
-      </div>
+    <div class="col-12 position-relative">
+      <form
+        class="position-absolute forms"
+        [formGroup]="formGroup"
+        (ngSubmit)="onSubmit()"
+      >
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control bg-dark text-white-50"
+          id="name"
+          formControlName="name"
+        />
+      </form>
 
-      <div class="bg-gradient bg-opacity-10 w-25 h-25 rounded-1 p-4">
-        <form [formGroup]="formGrid" (ngSubmit)="onSubmit()">
-          <label for="name">Filas</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            formControlName="rowsNumber"
-          />
-          <label for="name">Columnas</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            formControlName="columnsNumber"
-          />
-          <button type="submit" class="btn btn-primary">Guardar</button>
-        </form>
-      </div>
+      <form [formGroup]="formGrid" (ngSubmit)="onSubmit()">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="rowsNumber">Filas</label>
+            <div class="input-group mb-3">
+              <span
+                class="input-group-text"
+                role="button"
+                (click)="decrementRowsNumber('rowsNumber')"
+                ><i class="bi bi-dash"></i
+              ></span>
+              <input
+                id="rowsNumber"
+                type="number"
+                class="form-control bg-dark text-white-50 text-center"
+                formControlName="rowsNumber"
+              />
+              <span
+                class="input-group-text"
+                role="button"
+                (click)="incrementRowsNumber('rowsNumber')"
+                ><i class="bi bi-plus"></i
+              ></span>
+            </div>
+          </div>
 
-      <button type="button" (click)="generateSeats()">+</button>
+          <div class="form-group">
+            <label for="columnsNumber">Columnas</label>
+            <div class="input-group mb-3">
+              <span
+                class="input-group-text"
+                role="button"
+                (click)="decrementRowsNumber('columnsNumber')"
+                ><i class="bi bi-dash"></i
+              ></span>
+              <input
+                id="columnsNumber"
+                type="number"
+                class="form-control bg-dark text-white-50 text-center"
+                formControlName="columnsNumber"
+              />
+              <span
+                class="input-group-text"
+                role="button"
+                (click)="incrementRowsNumber('columnsNumber')"
+                ><i class="bi bi-plus"></i
+              ></span>
+            </div>
+          </div>
+        </div>
 
-      <div #seats class="screen bg-dark">
+        <div #seats class="screen">
+          <div class="display">
+            <div class="blur"></div>
+            <div id="display"></div>
+          </div>
 
-         <div id="display">
-           <div class="display"></div>
-         </div>
-
-
-        <div class="seats">
-          <div
-            class="container-seats"
-            *ngFor="let row of currentCinema.seating_capacity; let i = index"
-          >
-            <div class="seats-row" style="z-index: '{{ i }}'">
-              <div
-                *ngFor="let seat of row.seats_available; let j = index"
-                (click)="removeSeat(row.row, j)"
-                [ngClass]="{ hidden: !seat }"
-                class="seats-seat"
-              >
-                {{ row.row + seat }}
+          <div class="seats">
+            <div
+              class="container-seats"
+              *ngFor="let row of currentCinema.seating_capacity; let i = index"
+            >
+              <div class="seats-row" style="z-index: '{{ i }}'">
+                <div
+                  *ngFor="let seat of row.seats_available; let j = index"
+                  (click)="removeSeat(row.row, j)"
+                  [ngClass]="{ hidden: !seat }"
+                  class="seats-seat"
+                >
+                  {{ row.row + seat }}
+                </div>
               </div>
             </div>
           </div>
+        </div>
+        <div
+          class="w-100 my-5 d-flex justify-content-between align-items-center"
+        >
+          <div>
+            <button
+              routerLink="/layout/cinemas"
+              type="submit"
+              class="btn btn-dark"
+            >
+              Cancelar
+            </button>
+          </div>
+          <div class="d-flex align-items-center justify-content-center gap-3">
+            <button
+              *ngIf="currentCinema._id"
+              type="button"
+              class="btn btn-outline-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#danger-alert-modal"
+            >
+              Eliminar
+            </button>
+            <button
+              [disabled]="!formGroup.valid"
+              type="submit"
+              class="btn btn-primary"
+            >
+              <span *ngIf="!currentCinema._id">Crear</span>
+              <span *ngIf="currentCinema._id">Actualizar</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div
+  id="danger-alert-modal"
+  class="modal fade"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content modal-filled bg-danger">
+      <div class="modal-body p-4">
+        <div class="text-center">
+          <i class="bi bi-exclamation-triangle h1"></i>
+          <h4 class="mt-2">¿Estás seguro de eliminar este cinema?</h4>
+          <p class="mt-3">Esta acción no se puede deshacer.</p>
+          <button
+            (click)="deleteCinema()"
+            type="button"
+            class="btn btn-light my-2"
+            data-bs-dismiss="modal"
+          >
+            Continuar
+          </button>
         </div>
       </div>
     </div>
