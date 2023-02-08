@@ -9,6 +9,7 @@ import { MoviesService } from 'src/app/services/movies.service';
 })
 export class IndexComponent implements OnInit {
   movies: Movie[] = [];
+  posters: Movie[] = [];
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {
@@ -19,6 +20,11 @@ export class IndexComponent implements OnInit {
     this.moviesService.getMovies().subscribe((res: any) => {
       if (res.status === 'success') {
         this.movies = res.data.movies as Movie[];
+
+        this.movies.forEach((movie: Movie) => {
+          this.posters.push(movie);
+        });
+        console.log(this.posters);
       }
     });
   }

@@ -15,16 +15,30 @@
     <div class="carousel-item active">
       <img
         class="d-block img-fluid"
-        src="https://cloudfront-us-east-1.images.arcpublishing.com/semana/VQUWUFXDAJDAJIM46QJIYOSBJI.jpg"
+        src="https://s3.amazonaws.com/admin.kfc.production/banners/63d9bb42359e6_1-Banner-2880x980.jpg"
         alt="First slide"
       />
     </div>
+
     <div class="carousel-item">
       <img
         class="d-block img-fluid"
-        src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgINJ1Ztwtwxp6pgkzB64DwOYBq7ireftsK6R3kcSW-ZHKhFBysLqpsYKuUs4u2mH5hHKl79AUldFqxRfEc-pQB-SYxzDBrPvFksHcKFba1C9cprVjFglFy8nptepiV1JMXmAEOTP4tblpHbAiF5v59JhoTlN9cyPW4fpa721wGYKR1maI20lr48mOCkQ/s1920/KA_TLOU_HeroArt_1920x1080_HBOMax_BRA_Organic_PreLaunch.jpg"
-        alt="Second slide"
+        src="https://www.cinextecuador.com/IT-CDN/Themes/_default/Images/Carousel/carousel-02.jpg"
+        alt="First slide"
       />
+    </div>
+
+    <div class="carousel-item">
+      <img
+        class="d-block img-fluid"
+        src="https://www.cinextecuador.com/IT-CDN/Themes/_default/Images/Carousel/carousel-05.jpg
+"
+        alt="First slide"
+      />
+    </div>
+
+    <div class="carousel-item" *ngFor="let poster of posters">
+      <img class="d-block img-fluid" src="{{ poster.poster }}" />
     </div>
   </div>
 </div>
@@ -44,7 +58,7 @@
           alt="{{ movie.title }}"
           class="moviegrid-poster img-fluid"
         />
-        <h3 class="moviegrid-title mt-2 font-20">{{ movie.title }}</h3>
+        <h3 class="moviegrid-title mt-2 font-15">{{ movie.title }}</h3>
       </div>
     </div>
   </div>

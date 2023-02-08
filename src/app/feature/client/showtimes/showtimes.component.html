@@ -7,7 +7,7 @@
   ></div>
   <div class="container">
     <div class="movie-data row">
-      <div class="col-md-4 px-5">
+      <div class="col-md-4 pl-5">
         <div class="movie-poster">
           <img
             class="img-fluid"
@@ -16,16 +16,20 @@
           />
         </div>
         <div class="movie-meta">
-          <dl class="movie meta-director">
-            <dt>Director:</dt>
+          <dl class="movie meta-director text-white-50">
+            <dt>Directores:</dt>
             <dd>{{ movie.directors }}</dd>
           </dl>
-          <dl class="movie-meta-cast">
-            <dt>Starring:</dt>
+          <dl class="movie-meta-cast text-white-50">
+            <dt>Actores:</dt>
             <dd>{{ movie.actors }}</dd>
           </dl>
-          <dl class="movie-meta-runtime">
-            <dt>Running Time:</dt>
+          <dl class="movie-meta-runtime text-white-50">
+            <dt>Género:</dt>
+            <dd>{{ movie.genre }}</dd>
+          </dl>
+          <dl class="movie-meta-runtime text-white-50">
+            <dt>Duración:</dt>
             <dd>{{ movie.duration }}</dd>
           </dl>
         </div>
@@ -36,10 +40,12 @@
           <div class="ratio ratio-16x9">
             <youtube-player
               [width]="855"
-              [height]="500"
+              [height]="480"
               [videoId]="getEmbedUrl(movie.trailer)"
             ></youtube-player>
           </div>
+              <h3 class="movie-title1">Sinopsis</h3>
+
           <p class="movie-overview">{{ movie.synopsis }}</p>
         </div>
         <div class="movie-item">
