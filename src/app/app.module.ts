@@ -8,6 +8,7 @@ import { FeatureModule } from './feature/feature.module';
 import { LayoutProviderModule } from './layouts/provider/layout.module';
 import { HttpClientModule } from '@angular/common/http';
 
+
 @NgModule({
   declarations: [AppComponent],
   bootstrap: [AppComponent],

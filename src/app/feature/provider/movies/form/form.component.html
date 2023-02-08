@@ -27,21 +27,21 @@
     >
       <div class="position-relative">
         <div
-          *ngIf="urlBackdropValid"
+          *ngIf="urlPosterValid"
           class="movie-backdrop"
           [ngStyle]="{
             'background-image':
               'url(' +
-              (!currentMovie.backdrop
+              (!currentMovie.poster
                 ? 'https://placehold.jp/a9bdbd/ffffff/1920x1080.png?text=portada&css=%7B%22font-size%22%3A%2270px%22%2C%22color%22%3A%22%23667c83%22%7D'
-                : currentMovie.backdrop) +
+                : currentMovie.poster) +
               ')'
           }"
         >
           }">
         </div>
         <div
-          *ngIf="!urlBackdropValid"
+          *ngIf="!urlPosterValid"
           class="movie-backdrop"
           [ngStyle]="{
             'background-image':
@@ -73,36 +73,6 @@
               </span>
             </div>
           </div>
-          <!-- <div class="form-group col-3">
-            <input
-              type="text"
-              class="form-control"
-              id="backdrop"
-              name="backdrop"
-              formControlName="backdrop"
-              placeholder="Link de fondo"
-              [ngClass]="{
-                'is-invalid':
-                  submitted ||
-                  (formGroup.get('backdrop')?.invalid &&
-                    formGroup.get('backdrop')?.touched)
-              }"
-            />
-            <div
-              *ngIf="
-                (submitted && formGroup.get('backdrop')?.invalid) ||
-                formGroup.get('backdrop')?.touched
-              "
-              class="invalid-feedback"
-            >
-              <div *ngIf="formGroup.get('backdrop')?.hasError('required')">
-                Este campo es requerido
-              </div>
-              <div *ngIf="formGroup.get('backdrop')?.hasError('invalidUrl')">
-                El link no es válido
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
 

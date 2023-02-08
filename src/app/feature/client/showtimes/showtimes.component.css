@@ -1,8 +1,3 @@
-
-.container{
-  padding: 0 5rem;
-}
-
 .movie-backdrop {
   height: 400px;
   width: 100%;
@@ -28,7 +23,7 @@
   margin-top: -100px;
 }
 .movie-poster img {
-  box-shadow: 0 0 60px 1px rgba(100, 100, 100, .6);
+  box-shadow: 0 0 60px 1px rgba(100, 100, 100, 0.6);
 }
 .movie-play-trailer:hover {
   opacity: 1;
@@ -46,11 +41,33 @@
   font-size: 14px;
 }
 .movie-meta dt {
-  margin-right: .4rem;
+  margin-right: 0.4rem;
   color: #ddd;
 }
 .movie-meta dd {
   color: #777;
+}
+
+.movie-item {
+    background-color: #0000006e;
+    border: none;
+    margin-bottom: 1rem;
+    padding: 2rem;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    border-radius: 30px;
+}
+
+.movie-showtimes .session .session-times .session-time img {
+    vertical-align: middle;
+    height: 16px;
+}
+.session-time img {
+    display: none;
+}
+img {
+    max-width: 100%;
 }
 @media (max-width: 767px) {
   .movie-title {

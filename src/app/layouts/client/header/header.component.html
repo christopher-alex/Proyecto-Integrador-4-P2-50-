@@ -1,24 +1,22 @@
-<div class="container-fluid d-grid gap-3 align-items-center px-4" style="grid-template-columns: 1fr 2fr;">
+<div class="container-fluid d-flex justify-content-between gap-3 align-items-center px-4 bg bg-black" >
   <div class="dropdown">
-    <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+    <a class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none bg-black">
       <h5>Cine Buy Web</h5>
     </a>
 
+
+  </div>
+  <div>
     <ul class="nav nav-pills">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+        <a class="nav-link active bg-transparent" aria-current="page" href="#">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Películas</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Cines</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Funciones</a>
+        <a class="nav-link" href="#">Reservas</a>
       </li>
     </ul>
   </div>
+
 
 
 
@@ -29,7 +27,7 @@
       <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
         aria-expanded="false">
         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle me-lg-2">
-        <span class="d-none d-lg-inline-flex text-white opacity-50">Usuario Ejemplo</span>
+        <span class="d-none d-lg-inline-flex text-white opacity-50">{{currentUser.fullName}}</span>
       </a>
       <ul class="dropdown-menu text-small shadow">
         <li><a class="dropdown-item" href="#">Ajustes</a></li>
@@ -37,7 +35,7 @@
         <li>
           <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
+        <li>  <a class="dropdown-item" (click)="logout()" href="">Cerrar Sesión</a></li>
       </ul>
     </div>
   </div>

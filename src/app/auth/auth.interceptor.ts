@@ -14,7 +14,6 @@ import { AuthLocalStorage } from './auth-local-storage';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   constructor(
-    private authService: AuthService,
     private authLocalStorage: AuthLocalStorage
   ) {}
 

@@ -1,0 +1,85 @@
+.card-body {
+  padding: 3rem 2rem;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img-fluid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.blur {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(100px);
+
+}
+
+.container-animation {
+   position: absolute;
+   left: -180px;
+   top: -180px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   animation: rotate 15s linear infinite;
+   -webkit-animation: rotate 15s linear infinite;
+}
+
+.animation {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+
+.circle {
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  animation: rotate 5s linear infinite;
+  -webkit-animation: rotate 5s linear infinite;
+}
+
+.circle1 {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  margin: auto;
+  bottom: 0%;
+  z-index: 2;
+  background: linear-gradient(to right, #00b3ff, #004461);
+}
+
+.circle2 {
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  z-index: 3;
+  background: linear-gradient(to right, #ff00b3, #440030);
+}
+.circle3 {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  z-index: 4;
+  background: linear-gradient(to right, #ffbf00, #423200);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+

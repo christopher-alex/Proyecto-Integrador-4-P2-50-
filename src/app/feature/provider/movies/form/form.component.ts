@@ -85,7 +85,6 @@ export class MoviesFormComponent implements OnInit, OnDestroy {
         '',
         [Validators.required, Validators.min(1), Validators.max(300)],
       ],
-      backdrop: ['', [Validators.required]],
       poster: ['', [Validators.required]],
       trailer: ['', [Validators.required]],
       synopsis: [
@@ -133,17 +132,6 @@ export class MoviesFormComponent implements OnInit, OnDestroy {
         } else {
           this.urlPosterValid = false;
           this.formGroup.controls['poster'].setErrors({ invalidUrl: true });
-        }
-      });
-    });
-    this.formGroup.controls['backdrop'].valueChanges.subscribe((value) => {
-      this.verifyUrl(value).subscribe((result) => {
-        if (result) {
-          this.urlBackdropValid = true;
-          this.formGroup.controls['backdrop'].setErrors(null);
-        } else {
-          this.urlBackdropValid = false;
-          this.formGroup.controls['backdrop'].setErrors({ invalidUrl: true });
         }
       });
     });

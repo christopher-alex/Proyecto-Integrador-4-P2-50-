@@ -1,47 +1,80 @@
- <body class="authentication-bg pb-0" data-layout-config='{"darkMode":false}'>
 
-        <div class="auth-fluid">
-            <!--Auth fluid left content -->
-            <div class="auth-fluid-form-box">
-                <div class="align-items-center d-flex h-100">
-                    <div class="card-body">
+  <div class="auth-fluid">
+    <!--Auth fluid left content -->
+    <div class="auth-fluid-form-box bg-black">
+      <div class="align-items-center d-flex h-100">
+        <div class="container-animation">
+          <div class="animation">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+          </div>
+        </div>
 
-                        <!-- Logo -->
-                        <div class="auth-brand text-center text-lg-start">
-                            <a href="index.html" class="logo-dark">
-                                <span><img src="assets/images/logo-dark.png" alt="" height="18"></span>
-                            </a>
-                            <a href="index.html" class="logo-light">
-                                <span><img src="assets/images/logo.png" alt="" height="18"></span>
-                            </a>
-                        </div>
+        <div class="card-body blur">
+          <!-- Logo -->
+          <div>
+            <div class="auth-brand text-center text-lg-start">
+              <a href="index.html" class="logo-dark">
+                <span
+                  ><img src="assets/images/logo-dark.png" alt="" height="18"
+                /></span>
+              </a>
+              <a href="index.html" class="logo-light">
+                <span
+                  ><img src="assets/images/logo.png" alt="" height="18"
+                /></span>
+              </a>
+            </div>
 
-                        <!-- title-->
-                        <h4 class="mt-0">Free Sign Up</h4>
-                        <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute</p>
 
-                        <!-- form -->
-                        <form (ngSubmit)="register()" [formGroup]="formGroup">
-                            <div class="mb-3">
-                                <label for="fullname" class="form-label">Full Name</label>
-                                <input class="form-control  bg bg-dark shadow-lg" formControlName="fullName" type="text" id="fullname" placeholder="Enter your name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input class="form-control" formControlName="email" type="email" id="emailaddress" required placeholder="Enter your email">
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input class="form-control"  formControlName="password" type="password" required id="password" placeholder="Enter your password">
-                            </div>
-                            <div class="mb-3">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="checkbox-signup">
-                                    <label class="form-check-label" for="checkbox-signup">I accept <a href="javascript: void(0);" class="text-muted">Terms and Conditions</a></label>
-                                </div>
-                            </div>
-                            <div class="mb-0 d-grid text-center">
-                                <button
+          <!-- title-->
+
+          <h4 class="mt-0 text-light">Regístrate</h4>
+          <p class=" mb-4 text-light">
+            No tienes cuenta? Registra tus datos y en un minuto crea una!
+          </p>
+
+          <!-- form -->
+          <form (ngSubmit)="register()" [formGroup]="formGroup">
+            <div class="mb-3">
+              <label for="fullname" class="form-label text-light">Nombre y Apellido</label>
+              <input
+                class="form-control bg bg-dark shadow-lg text-bg-secondary"
+                formControlName="fullName"
+                type="text"
+                id="fullname"
+                placeholder="Ingresa tu nombre y apellido"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label text-light">Correo electrónico</label>
+              <input
+                class="form-control bg bg-dark shadow-lg text-bg-secondary"
+                formControlName="email"
+                type="email"
+                id="emailaddress"
+                required
+                placeholder="Ingresa tu correo electrónico"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label text-light">Contraseña</label>
+              <input
+                class="form-control bg bg-dark shadow-lg text-bg-secondary"
+                formControlName="password"
+                type="password"
+                required
+                id="password"
+                placeholder="Ingresa tu contraseña"
+              />
+            </div>
+            <div class="mb-3">
+
+            </div>
+            <div class="mb-0 d-grid text-center">
+              <button
                 class="btn btn-dark hover:btn-primary-focus w-full capitalize mt-5"
                 type="submit"
                 [disabled]="!formGroup.valid"
@@ -51,55 +84,61 @@
               >
                 Registrarse
               </button>
-                            </div>
-                            <!-- social-->
-                            <div class="text-center mt-4">
-                                <p class="text-muted font-16">Sign up using</p>
-                                <ul class="social-list list-inline mt-3">
-                                    <li class="list-inline-item">
-                                        <a href="javascript: void(0);" class="social-list-item border-primary text-primary"><i class="mdi mdi-facebook"></i></a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i class="mdi mdi-google"></i></a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="javascript: void(0);" class="social-list-item border-info text-info"><i class="mdi mdi-twitter"></i></a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </form>
-                        <!-- end form-->
-
-                        <!-- Footer-->
-                        <footer class="footer footer-alt">
-                            <p class="text-muted">Already have account? <a href="/auth/login" class="text-muted ms-1"><b>Log In</b></a></p>
-                        </footer>
-
-                    </div> <!-- end .card-body -->
-                </div> <!-- end .align-items-center.d-flex.h-100-->
             </div>
-            <!-- end auth-fluid-form-box-->
-
-            <!-- Auth fluid right content -->
-            <div class="auth-fluid-right text-center">
-                <div class="auth-user-testimonial">
-                    <h2 class="mb-3">I love the color!</h2>
-                    <p class="lead"><i class="mdi mdi-format-quote-open"></i> It's a elegent templete. I love it very much! . <i class="mdi mdi-format-quote-close"></i>
-                    </p>
-                    <p>
-                        - Hyper Admin User
-                    </p>
-                </div> <!-- end auth-user-testimonial-->
+            <!-- social-->
+            <div class="text-center mt-4">
+              <p class="text-muted font-16">Sign up using</p>
+              <ul class="social-list list-inline mt-3">
+                <li class="list-inline-item">
+                  <a
+                    href="javascript: void(0);"
+                    class="social-list-item border-primary text-primary"
+                    ><i class="fa-brands fa-facebook"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="javascript: void(0);"
+                    class="social-list-item border-danger text-danger"
+                    ><i class="fa-brands fa-google"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="javascript: void(0);"
+                    class="social-list-item border-info text-info"
+                    ><i class="fa-brands fa-twitter"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a
+                    href="javascript: void(0);"
+                    class="social-list-item border-secondary text-secondary"
+                    ><i class="fa-brands fa-github"></i></a>
+                </li>
+              </ul>
             </div>
-            <!-- end Auth fluid right content -->
+          </form>
+
+          <!-- end form-->
+
+          <!-- Footer-->
+          <footer class="footer footer-alt">
+            <p class="text-muted text-center">
+                Ya tienes una cuenta con nosotros?
+                <a href="/auth/login" class="text-muted ms-1"><b>Log In</b></a>
+              </p>
+          </footer>
         </div>
-        <!-- end auth-fluid-->
+        <!-- end .card-body -->
+      </div>
 
-        <!-- bundle -->
-        <script src="assets/js/vendor.min.js"></script>
-        <script src="assets/js/app.min.js"></script>
+      <!-- end .align-items-center.d-flex.h-100-->
+    </div>
+    </div>
 
-    </body>
+    <div class="d-flex align-items-center text-center">
+      <img src="assets/images/bg-register.png" alt="" class="img-fluid" />
+    </div>
+  </div>
+  <!-- end auth-fluid-->
+
+  <!-- bundle -->
+

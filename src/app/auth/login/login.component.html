@@ -1,86 +1,141 @@
-<body class="authentication-bg pb-0" data-layout-config='{"darkMode":false}'>
+
   <div class="auth-fluid">
     <!--Auth fluid left content -->
-    <div class="auth-fluid-form-box">
+    <div class="auth-fluid-form-box bg-body">
       <div class="align-items-center d-flex h-100">
-        <div class="card-body">
-          <!-- Logo -->
-          <div class="auth-brand text-center text-lg-start">
-            <a href="index.html" class="logo-dark">
-              <span
-                ><img src="assets/images/img1.jpg" alt="" height="18"
-              /></span>
-            </a>
-            <a href="index.html" class="logo-light">
-              <span
-                ><img src="assets/images/img1.jpg" alt="" height="18"
-              /></span>
-            </a>
+        <div class="container-animation">
+          <div class="animation">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
           </div>
+        </div>
 
-          <!-- title-->
-          <h4 class="mt-0">CINE BUY WEB</h4>
-          <p class="text-muted mb-4">
-            Por favor, digital tus credenciales para ingresar al sistema, si no
-            tienes cuenta, regístrate.
-          </p>
-
-          <!-- form -->
-          <form (ngSubmit)="login()" [formGroup]="formGroup">
-            <div class="mb-3">
-              <label for="email" class="form-label">Correo Electronico</label>
-              <input
-                class="form-control bg bg-dark shadow-lg"
-                type="email"
-                id="email"
-                formControlName="email"
-                required=""
-                autocomplete="off"
-                spellcheck="false"
-                placeholder="Escribe tu email"
-              />
-
-              <label for="password" class="form-label">Contraseña</label>
-              <input
-                class="form-control bg bg-dark shadow-lg text-bg-light"
-                type="password"
-                id="password"
-                formControlName="password"
-                required=""
-                autocomplete="off"
-                spellcheck="false"
-                placeholder="Escribe tu contraseña"
-              />
-
-              <button
-                class="btn btn-dark hover:btn-primary-focus w-full capitalize mt-5"
-                type="submit"
-                [disabled]="!formGroup.valid"
-                [ngClass]="{
-                  '!text-white !bg-neutral opacity-80': !formGroup.valid
-                }"
-              >
-                Iniciar Sesión
-              </button>
-              <p class="text-muted">
-              Don't have an account?
-              <a href="/auth/register" class="text-muted ms-1"
-                ><b>Sign Up</b></a
-              >
-            </p>
+        <div class="card-body blur">
+          <div>
+            <!-- Logo -->
+            <div class="auth-brand text-center text-lg-start">
+              <a href="index.html" class="logo-dark">
+                <span
+                  ><img src="assets/images/img1.jpg" alt="" height="18"
+                /></span>
+              </a>
+              <a href="index.html" class="logo-light">
+                <span
+                  ><img src="assets/images/img1.jpg" alt="" height="18"
+                /></span>
+              </a>
             </div>
-          </form>
-          <!-- end form-->
 
-          <!-- Footer-->
-          <footer class="footer footer-alt">
-            <p class="text-muted">
-              Don't have an account?
-              <a href="/auth/register" class="text-muted ms-1"
-                ><b>Sign Up</b></a
-              >
+            <!-- title-->
+            <h4 class="mt-0">CINE BUY WEB</h4>
+
+            <p class="text-muted mb-4">
+              Por favor, digita tus credenciales para ingresar al sistema, si no
+              tienes cuenta, regístrate.
             </p>
-          </footer>
+
+            <!-- form -->
+            <form class="formulario" (ngSubmit)="login()" [formGroup]="formGroup">
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input
+                  class="form-control bg bg-dark shadow-lg text-bg-secondary"
+                  type="email"
+                  id="email"
+                  formControlName="email"
+                  required=""
+                  autocomplete="off"
+                  spellcheck="false"
+                  placeholder="Escribe tu email"
+                />
+
+                <label for="password" class="form-label">Contraseña</label>
+                <input
+                  class="form-control bg bg-dark shadow-lg text-bg-secondary"
+                  type="password"
+                  id="password"
+                  formControlName="password"
+                  required=""
+                  autocomplete="off"
+                  spellcheck="false"
+                  placeholder="Escribe tu contraseña"
+                />
+                <div class="form-check p-3">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="checkbox-signup"
+                    formControlName="terms_and_conditions"
+                  />
+                  <label class="form-check-label" for="checkbox-signup"
+                    >Acepto
+                    <a href="javascript: void(0);" class="text-muted"
+                      > los términos y condiciones</a
+                    ></label
+                  >
+                </div>
+                <div class="mb-0 d-grid text-center">
+                  <button
+                    class="btn btn-dark hover:btn-primary-focus w-full capitalize mt-5"
+                    type="submit"
+                    [disabled]="!formGroup.valid"
+                    [ngClass]="{
+                      '!text-white !bg-neutral opacity-80': !formGroup.valid
+                    }"
+                  >
+                    Iniciar Sesión
+                  </button>
+                </div>
+                <!-- social-->
+                <div class="text-center mt-4">
+                  <p class="text-muted font-16">Regístrate usando</p>
+                  <ul class="social-list list-inline mt-3">
+                    <li class="list-inline-item">
+                      <a
+                        href="javascript: void(0);"
+                        class="social-list-item border-primary text-primary"
+                        ><i class="fa-brands fa-facebook"></i
+                      ></a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        href="javascript: void(0);"
+                        class="social-list-item border-danger text-danger"
+                        ><i class="fa-brands fa-google"></i
+                      ></a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        href="javascript: void(0);"
+                        class="social-list-item border-info text-info"
+                        ><i class="fa-brands fa-twitter"></i
+                      ></a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a
+                        href="javascript: void(0);"
+                        class="social-list-item border-secondary text-secondary"
+                        ><i class="fa-brands fa-github"></i
+                      ></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </form>
+
+            <!-- end form-->
+
+            <!-- Footer-->
+            <footer class="footer footer-alt">
+              <p class="text-muted">
+                No tienes cuenta con nosotros?
+                <a href="/auth/register" class="text-muted ms-1"
+                  ><b>Regístrate aquí</b></a
+                >
+              </p>
+            </footer>
+          </div>
         </div>
         <!-- end .card-body -->
       </div>
@@ -89,14 +144,9 @@
     <!-- end auth-fluid-form-box-->
 
     <!-- Auth fluid right content -->
-    <div class="d-flex align-items-center text-center">
-      <img src="assets/images/img2.png" alt="" class="img-fluid" />
+    <div class="d-flex align-items-center text-center bg-body">
+      <img src="/assets/images/bg-login.png" alt="" class="img-fluid" />
     </div>
     <!-- end Auth fluid right content -->
   </div>
-  <!-- end auth-fluid-->
 
-  <!-- bundle -->
-  <script src="assets/js/vendor.min.js"></script>
-  <script src="assets/js/app.min.js"></script>
-</body>

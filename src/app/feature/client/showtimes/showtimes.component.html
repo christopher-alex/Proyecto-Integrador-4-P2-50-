@@ -1,36 +1,68 @@
 <div *ngIf="movie">
-  <div class="movie-backdrop"
-    [ngStyle]="{ 'background-image': 'url(https://www.cinextecuador.com/IT-CDN/Themes/_default/Images/Carousel/carousel-05.jpg)' }">
-  </div>
+  <div
+    class="movie-backdrop"
+    [ngStyle]="{
+      'background-image':
+        'url(https://movie.thaiware.com/upload_misc/movie/2021_12/review/137269_211218201253MY.png)'
+    }"
+  ></div>
   <div class="container">
     <div class="movie-data row">
       <div class="col-md-4 px-5">
         <div class="movie-poster">
-          <img class="img-fluid" src="{{ movie.poster }}" alt="{{ movie.title }}" />
+          <img
+            class="img-fluid"
+            src="{{ movie.poster }}"
+            alt="{{ movie.title }}"
+          />
         </div>
+        <div class="movie-meta">
+          <dl class="movie meta-director">
+            <dt>Director:</dt>
+            <dd>{{ movie.directors }}</dd>
+          </dl>
+          <dl class="movie-meta-cast">
+            <dt>Starring:</dt>
+            <dd>{{ movie.actors }}</dd>
+          </dl>
+          <dl class="movie-meta-runtime">
+            <dt>Running Time:</dt>
+            <dd>{{ movie.duration }}</dd>
+          </dl>
+        </div>
+
       </div>
       <div class="col-md-8 position-relative bg-gradient rounded-2">
         <h2 class="movie-title">{{ movie.title }}</h2>
         <div class="movie-info">
           <div class="ratio ratio-16x9">
-            <youtube-player [width]="560" [height]="315" [videoId]="getEmbedUrl(movie.trailer)"></youtube-player>
+            <youtube-player
+              [width]="855"
+              [height]="400"
+              [videoId]="getEmbedUrl(movie.trailer)"
+            ></youtube-player>
           </div>
           <p class="movie-overview">{{ movie.synopsis }}</p>
-          <div class="movie-meta">
-            <dl class="movie meta-director">
-              <dt>Director:</dt>
-              <dd>{{ movie.directors }}</dd>
-            </dl>
-            <dl class="movie-meta-cast">
-              <dt>Starring:</dt>
-              <dd>{{ movie.actors }}</dd>
-            </dl>
-            <dl class="movie-meta-runtime">
-              <dt>Running Time:</dt>
-              <dd>{{ movie.duration }}</dd>
-            </dl>
+        </div>
+        <div class="movie-item">
+          <div class="movie-showtime">
+            <div class="movie-header">
+              <h3 class="movie-title1">Funciones</h3>
+            </div>
+            <div class="session">
+                <h4 class="session-date">miércoles, 09 de marzo 2023</h4>
+              <div class="session-time">
+                <a href="" class="session-time">
+                  <img src="	https://www.cinextecuador.com/CDN/media/entity/get…/DOB?referenceScheme=Global&allowPlaceHolder=true" alt="">
+
+                    <time datetime="2023-02-08T14:00:00">02:0 p.m.</time>
+</a>
+              </div>
+            </div>
           </div>
         </div>
+
+        <div></div>
       </div>
     </div>
   </div>

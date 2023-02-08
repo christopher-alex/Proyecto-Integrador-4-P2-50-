@@ -24,6 +24,8 @@ import { IndexComponent } from './client/index/index.component';
 import { ShowtimesComponent } from './client/showtimes/showtimes.component';
 import { LoginComponent } from '../auth/login/login.component';
 import { RegisterComponent } from '../auth/register/register.component';
+import { TicketsFormComponent } from './provider/tickets/form/form.component';
+import { TicketsListComponent } from './provider/tickets/list/list.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { RegisterComponent } from '../auth/register/register.component';
     ShowtimesListComponent,
     ProductsFormComponent,
     ProductsListComponent,
+    TicketsFormComponent,
+    TicketsListComponent,
   ],
   imports: [
     CommonModule,

@@ -19,13 +19,15 @@ export class AuthValidator {
     return false;
   }
 
-  hasPermission(token: string): boolean {
+  hasPermission(token: string,role:string): boolean {
+    console.log("has permisision");
     if (!this.isTokenValid(token)) {
       return false;
     }
     const permissionsUser = this.decodeToken.decodeToken(token).user;
-    if (permissionsUser ) {
-      return permissionsUser.role === 'admin';
+    if (permissionsUser && role) {
+      console.log(permissionsUser);
+      return permissionsUser.role === role;
     } else {
       return false;
     }

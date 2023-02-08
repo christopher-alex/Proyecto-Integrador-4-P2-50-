@@ -11,6 +11,8 @@ import { ProductsFormComponent } from 'src/app/feature/provider/products/form/fo
 import { ProductsListComponent } from 'src/app/feature/provider/products/list/list.component';
 import { ShowtimesFormComponent } from 'src/app/feature/provider/showtimes/form/form.component';
 import { ShowtimesListComponent } from 'src/app/feature/provider/showtimes/list/list.component';
+import { TicketsFormComponent } from 'src/app/feature/provider/tickets/form/form.component';
+import { TicketsListComponent } from 'src/app/feature/provider/tickets/list/list.component';
 
 const routes: Routes = [
   {
@@ -53,7 +55,7 @@ const routes: Routes = [
             path: 'movie/:id',
             component: ShowtimesFormComponent,
           },
-         
+
           {
             path: 'list',
             component: ShowtimesListComponent,
@@ -104,10 +106,31 @@ const routes: Routes = [
           },
         ],
       },
+      {
+        path: 'tickets',
+        children: [
+          {
+            path: '',
+            redirectTo: 'list',
+            pathMatch: 'full',
+          },
+          {
+            path: 'form',
+            component: TicketsFormComponent,
+          },
+          {
+            path: 'form/:id',
+            component: TicketsFormComponent,
+          },
+          {
+            path: 'list',
+            component: TicketsListComponent,
+          },
+        ],
+      },
     ],
   },
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],

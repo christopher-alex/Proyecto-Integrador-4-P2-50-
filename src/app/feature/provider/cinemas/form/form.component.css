@@ -38,7 +38,7 @@
   color: black;
   font-size: 12px;
   font-weight: 600;
-  box-shadow: 0 0 -10px 10px #00000090;
+  box-shadow: 0 10px 10px 10px #0000002f;
   cursor: pointer;
 }
 
@@ -79,6 +79,18 @@
   -moz-border-radius: 50% 50% 0 0;
   -ms-border-radius: 50% 50% 0 0;
   -o-border-radius: 50% 50% 0 0;
+  position: relative;
+  padding: 10px;
+}
+
+.display{
+  backdrop-filter: blur(10px);
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  top: 0;
+  left: 0;
+
 }
 
 .input-row {

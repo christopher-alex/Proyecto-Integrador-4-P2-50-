@@ -40,7 +40,9 @@ export class RegisterComponent implements OnInit {
           this.formGroup.value.password
         )
         .subscribe((res: any) => {
-          this.router.navigate(['/auth/login']);
+          if (res.status === 'success') {
+            this.router.navigate(['/auth/login']);
+          }
         });
     }
   }

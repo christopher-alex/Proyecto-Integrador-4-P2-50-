@@ -28,20 +28,28 @@ export class LoginGuard implements CanActivate {
 
   isNotAuthenticated(): boolean {
     if (this.authService.isAuthenticated()) {
-      if (!this.authService.isAuthorized) {
-        this.router.navigate(['/cine']);
-        return false;
-      }
-      else {
-this.router.navigate(['/layout'], {
-  queryParams: { returnUrl: '/layout' },
-});
-      }
-
-
+       if (this.authService.isAuthorized('client')) {
+         this.router.navigate(['/cine'], {
+           queryParams: { returnUrl: '/cine' },
+         });
+         return false;
+       } else if (this.authService.isAuthorized('provider')) {
+         this.router.navigate(['/layout'], {
+           queryParams: { returnUrl: '/layout' },
+         });
+       }
       return false;
     } else {
       return true;
     }
   }
 }
+/* if (!this.authService.isAuthorized) {
+  this.router.navigate(['/cine']);
+  return false;
+} else {
+  this.router.navigate(['/cine'], {
+    queryParams: { returnUrl: '/layout' },
+  });
+}
+ */
